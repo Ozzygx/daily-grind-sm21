@@ -72,13 +72,13 @@
 				<li>A paragraph or two of content that describes the daily item (paragraph must include the name of the highlighted weekday)</li>
 				<li>A unique color that supports the image and paragraph of content</li>
 			</ul>
-
-<div id=mydiv> 
+		</p>	
+<div id="mydiv"></div>
 			
 
-    		 <p></p><img src="images/pumpkin-spice-latte.jpg" alt="Our Pumpkin Spice Latte tastes great on a Fall Day!" id="coffee"> </img>
-            <strong class="feature">Monday's Coffee Special:</strong> Monday's daily coffee special is <strong class="feature">Pumpkin Spice Latte</strong>, which makes us wish it was always Fall, as this is one of our top sellers!</p>
-</div>        
+    		
+			
+
 		<h3>Coffee Specials for Each Day of the week</h3>
 		<p><a href="?day=0">Sunday</a></p>
 		<p><a href="?day=1">Monday</a></p>
@@ -98,25 +98,27 @@
     <!-- END Footer -->
 <script>
 	
-	function coffeeTemplate(coffee){
-		let myReturn = `<p>
-			<img src="$(coffee.pic)" alt="${coffee.alt}" id="coffee" />
-		${coffee.day} daily coffee special is <strong class="feature">${coffee.name}</strong>,
-		${coffee.desc}!</p>`;		
+    function coffeeTemplate(coffee){
+        let myReturn = `<p>
+            <img src="${coffee.pic}" alt="${coffee.alt}" id="coffee" />
+        ${coffee.day} daily coffee special is <strong class="feature">${coffee.name}</strong>,
+        ${coffee.desc}!</p>`;       
+ 
+ 
+        return myReturn;
+    }
 
-
-		return myReturn;
-	}
 	
 
-	let myDate = new Date() ;
+	let myDate = new Date();
 
-	let today = myDate.getDay() ;
+	let today = myDate.getDay();
 
 	let coffee = "";
 
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
+	
 
 	//if data is being passed querystring, use it!
 	if(urlParams.has('day')){
@@ -134,6 +136,20 @@
 
 	switch(today){
 
+		case 0:
+
+			coffee = {
+			name: "cold brew",
+			pic: "images/cold-brew.jpg",
+			alt: "cold brew Coffee",
+			day: "Sunday",
+			color:"black",
+			desc: `I love me some cold brew`
+			};
+
+		break;		
+
+
 		case 1:
 
 			coffee = {
@@ -141,8 +157,8 @@
 			pic: "images/drip.jpg",
 			alt: "Drip Coffee",
 			day: "Monday",
-			color:"coral",
-			desc: `I love me some Pumpkin Spice`
+			color:"blue",
+			desc: `I love drip coffee`
 			};
 
 		break;		
@@ -152,12 +168,12 @@
 		case 2:
 
 			coffee = {
-			name: "Drip",
-			pic: "images/drip.jpg",
-			alt: "Drip Coffee",
+			name: "frappaccino",
+			pic: "images/frappaccino.jpg",
+			alt: "frappaccino",
 			day: "Tuesday",
 			color:"coral",
-			desc: `I love me some Pumpkin Spice`
+			desc: `I love frapps`
 			};
 
 		break;
@@ -165,12 +181,12 @@
 		case 3:
 
 			coffee = {
-			name: "Bubble Tea",
-			pic: "images/bubble-tea.jpg",
-			alt: "Bubble Tea",
+			name: "mocha",
+			pic: "images/mocha.jpg",
+			alt: "mocha",
 			day: "Wednesday",
 			color:"purple",
-			desc: `I love bubble tea!`
+			desc: `I love mochas!`
 			};
 
 		break;
@@ -182,10 +198,36 @@
 			coffee = {
 			name: "Pumpkin Spice",
 			pic: "images/pumpkin-spice-latte.jpg",
-			alt: "Pumpkin Spice Coffee",
+			alt: "pumpkin Spice latte",
 			day: "Thursday",
 			color:"coral",
 			desc: `I love me some Pumpkin Spice`
+			};
+
+		break;
+
+		case 5:
+
+			coffee = {
+			name: "Bubble Tea",
+			pic: "images/bubble-tea.jpg",
+			alt: "Bubble Tea",
+			day: "Friday",
+			color:"purple",
+			desc: `I love bubble tea`
+			};
+
+		break;
+
+		case 6:
+
+			coffee = {
+			name: "caramel latte",
+			pic: "images/caramel-latte.jpg",
+			alt: "caramel latte",
+			day: "Saturday",
+			color:"brown",
+			desc: `I love caramel lattes`
 			};
 
 		break;
